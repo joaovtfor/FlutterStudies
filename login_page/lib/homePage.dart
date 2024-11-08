@@ -28,19 +28,8 @@ class HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Contador Column: $counter',
-              style: TextStyle(color: Colors.blue),
-            ),
-            CustomSwitch(),
-            Container(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Contador Row: $counter'),
-                CustomSwitch(),
-              ],
-            )
+            Text('Welcome to the DarkTheme App',
+                style: TextStyle(fontSize: 24)),
           ],
         ),
       ),

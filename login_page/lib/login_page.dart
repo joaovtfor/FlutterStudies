@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:login_page/homePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,61 +11,72 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String _username = '';
+  String _password = '';
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const TextField(
-              // onChanged: (value) {
-              //   setState(() {
-              //     _username = value;
-              //   });
-              // },
-              decoration: InputDecoration(
-                labelText: 'Username',
-              ),
-            ),
-            const TextField(
-              // onChanged: (value) {
-              //   setState(() {
-              //     _password = value;
-              //   });
-              // },
-              decoration: InputDecoration(
-                labelText: 'Password',
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.only(top: 20.0)),
-              onPressed: () {
-                // if (_username.isEmpty || _password.isEmpty) {
-                //   Scaffold.of(context).showSnackBar(
-                //     SnackBar(
-                //       content: Text('Please enter both username and password'),
-                //     ),
-                //   );
-                // } else {
-                //   // Simulate login
-                //   Navigator.pushReplacement(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => HomePage(),
-                //     ),
-                //   );
-                // }#
-                print("Logado com sucesso!");
-              },
-              child: Center(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _username = value;
+                    });
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Username',
+                  ),
+                ),
+                Container(
+                  height: 20,
+                ),
+                TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _password = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                  ),
+                ),
+                Container(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_username.isEmpty || _password.isEmpty) {
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   const SnackBar(
+                      //     content: Text('Username and password are required'),
+                      //   ),
+                      // );
+                      print('Username and password are required');
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
+                    }
+                  },
                   child: const Text(
-                'Login',
-              )),
+                    'Login',
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
