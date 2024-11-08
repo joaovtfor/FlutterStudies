@@ -1,7 +1,8 @@
-import 'package:render_types/appController.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -16,7 +17,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text(
+        title: const Text(
           'DarkTheme',
           style: TextStyle(color: Colors.white),
         ),
