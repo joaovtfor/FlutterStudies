@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black87,
         title: Text(
-          'DarkTheme',
+          'Router Test',
           style: TextStyle(color: Colors.white),
         ),
         actions: [CustomSwitch()],
@@ -30,6 +30,13 @@ class HomePageState extends State<HomePage> {
           children: [
             Text('Welcome to the DarkTheme App',
                 style: TextStyle(fontSize: 24)),
+            Container(
+                child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/');
+              },
+              child: Text('Back'),
+            ))
           ],
         ),
       ),

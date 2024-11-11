@@ -62,12 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                       // );
                       print('Username and password are required');
                     } else {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
+                      Navigator.of(context).pushNamed('/home');
                     }
                   },
                   child: const Text(
