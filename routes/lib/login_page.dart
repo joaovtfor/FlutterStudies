@@ -55,12 +55,15 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: () {
                     if (_username.isEmpty || _password.isEmpty) {
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //   const SnackBar(
-                      //     content: Text('Username and password are required'),
-                      //   ),
-                      // );
-                      print('Username and password are required');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(
+                            'Username and password are required',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      );
                     } else {
                       Navigator.of(context).pushNamed('/home');
                     }
