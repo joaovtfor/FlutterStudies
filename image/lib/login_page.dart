@@ -24,10 +24,9 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(20.0),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                  child: Column(
+              Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 150,
                     height: 150,
                     child: Image.network(
@@ -41,25 +40,29 @@ class _LoginPageState extends State<LoginPage> {
                       });
                     },
                     decoration: const InputDecoration(
-                        labelText: 'Username',
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
+                      labelText: 'Username',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                    ),
                   ),
-                  Container(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextField(
                     onChanged: (value) {
                       setState(() {
-                        _username = value;
+                        _password = value;
                       });
                     },
                     decoration: const InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                    ),
                   ),
                   Container(
                     height: 20,
@@ -87,12 +90,18 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
+                  const SizedBox(
+                    height: 150,
+                  ),
                 ],
-              )),
-              Container(
-                margin: const EdgeInsets.only(top: 150),
-                child: Text('João Vitor de For dos Santos @ 2024'),
               ),
+              Container(
+                  height: 250,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 200),
+                    child: const Text("Develpoed by: Joao Victor"),
+                  )),
             ]),
           ),
         ),
