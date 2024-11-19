@@ -49,18 +49,46 @@ class HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _MenuHeader() {
+    return SizedBox(
+      height: 200,
+      child: UserAccountsDrawerHeader(
+        decoration: BoxDecoration(color: Colors.grey[800]),
+        currentAccountPictureSize: const Size.fromRadius(24),
+        currentAccountPicture: ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.asset(
+            'assets/img/user.png',
+          ),
+        ),
+        accountName: const Text('Joao'),
+        accountEmail: const Text('joaovtfor@hotmail.com'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
         child: Column(
           children: [
-            UserAccountsDrawerHeader(
-              currentAccountPicture: ClipOval(
-                child: Image.asset('assets/img/Logo-tempo-integral.png'),
-              ),
-              accountName: Text('Joao'),
-              accountEmail: Text('test@test.com'),
+            _MenuHeader(),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              subtitle: const Text('Home page'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/home');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
+              subtitle: const Text('Exit the app'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/');
+              },
             ),
           ],
         ),

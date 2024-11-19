@@ -27,10 +27,23 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 300,
-                      child: Image.asset(
-                        'assets/img/Logo-tempo-integral.png',
+                      width: double.infinity,
+                      height: 170,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/img/Logo-tempo-integral.png',
+                          ),
+                          Image.asset(
+                            'assets/img/Logo-upf.png',
+                          ),
+                        ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 80,
                     ),
                     SizedBox(
                       height: 250,
