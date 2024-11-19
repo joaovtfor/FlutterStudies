@@ -27,71 +27,81 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 250,
+                      height: 300,
                       child: Image.asset(
                         'assets/img/Logo-tempo-integral.png',
                       ),
                     ),
-                    TextField(
-                      onChanged: (value) {
-                        setState(() {
-                          _username = value;
-                        });
-                      },
-                      decoration: const InputDecoration(
-                          labelText: 'Username',
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
-                    ),
-                    Container(
-                      height: 20,
-                    ),
-                    TextField(
-                      onChanged: (value) {
-                        setState(() {
-                          _password = value;
-                        });
-                      },
-                      decoration: const InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
-                    ),
-                    Container(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_username.isEmpty || _password.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              backgroundColor: Colors.red,
-                              content: Text(
-                                'Username and password are required',
+                    SizedBox(
+                      height: 250,
+                      child: Card(
+                        elevation: 0,
+                        color: Colors.white.withOpacity(0.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            TextField(
+                              onChanged: (value) {
+                                setState(() {
+                                  _username = value;
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                  labelText: 'Username',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20)))),
+                            ),
+                            TextField(
+                              onChanged: (value) {
+                                setState(() {
+                                  _password = value;
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                  labelText: 'Password',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20)))),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_username.isEmpty || _password.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text(
+                                        'Username and password are required',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.of(context).pushNamed('/home');
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue[800],
+                                  elevation: 100),
+                              child: const Text(
+                                'Login',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
-                          );
-                        } else {
-                          Navigator.of(context).pushNamed('/home');
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue[800], elevation: 100),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(color: Colors.white),
+                          ],
+                        ),
                       ),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                   ],
                 ),
               ),
               const SizedBox(
-                height: 300,
+                height: 200,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 250),
+                  padding: EdgeInsets.only(top: 180),
                   child: Text('João Vitor de For dos Santos @ 2024'),
                 ),
               ),
