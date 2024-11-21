@@ -1,0 +1,1 @@
+ C:\\Users\\joaov\\Desktop\\Estudos\ Flutter\\FlutterStudies\\render_types\\.dart_tool\\flutter_build\\b7d4a39f2d2e4c5b37f7d04542228b4f\\native_assets.yaml: 

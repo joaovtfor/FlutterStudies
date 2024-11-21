@@ -1,0 +1,1 @@
+ C:\\Users\\joaov\\Desktop\\General\\Study\\Estudos\ Flutter\\FlutterStudies\\drawer\\.dart_tool\\flutter_build\\8aad296868be8b7315b628892b21f035\\native_assets.yaml: 
