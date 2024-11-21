@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:drawer/appController.dart';
 import 'package:drawer/homePage.dart';
 import 'package:drawer/loginPage.dart';
