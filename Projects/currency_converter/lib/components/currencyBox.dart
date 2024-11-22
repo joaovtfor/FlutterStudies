@@ -1,39 +1,61 @@
 import 'package:flutter/material.dart';
 
-@override
-Widget build(BuildContext context) {
-  return Container(
-    padding: EdgeInsets.all(10),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(10),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
-          offset: Offset(0, 3),
-        ),
-      ],
-    ),
-    child: Column(
+class CurrencyBox extends StatelessWidget {
+  const CurrencyBox({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'USD',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          flex: 1,
+          child: SizedBox(
+            height: 64,
+            child: DropdownButton(
+              iconEnabledColor: Colors.amber,
+              elevation: 0,
+              isExpanded: true,
+              underline: Container(
+                height: 1,
+                color: Colors.amber,
+              ),
+              items: const [
+                DropdownMenuItem(
+                  value: 'USD',
+                  child: Text('USD'),
+                ),
+                DropdownMenuItem(
+                  value: 'EUR',
+                  child: Text('EUR'),
+                ),
+                DropdownMenuItem(
+                  value: 'JPY',
+                  child: Text('JPY'),
+                ),
+              ],
+              onChanged: (value) {
+                print(value);
+              },
+              hint: const Text('From'),
+            ),
           ),
         ),
-        SizedBox(height: 10),
-        Text(
-          '1 USD = 1.0 USD',
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey,
+        const SizedBox(width: 20),
+        const Expanded(
+          flex: 2,
+          child: TextField(
+            decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.amber),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.amber),
+              ),
+            ),
           ),
         ),
       ],
-    ),
-  );
+    );
+  }
 }
