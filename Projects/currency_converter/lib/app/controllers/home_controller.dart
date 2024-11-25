@@ -35,6 +35,6 @@ class HomeController {
         break;
     }
 
-    fromText.text = result.toStringAsFixed(2);
+    fromText.text = result.toStringAsFixed(4);
   }
 }

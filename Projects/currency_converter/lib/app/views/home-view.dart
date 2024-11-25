@@ -1,15 +1,31 @@
-import 'package:currency_converter/app/components/currencyBox.dart';
+import 'package:currency_converter/app/components/currency_box.dart';
+import 'package:currency_converter/app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+// ignore: must_be_immutable
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final TextEditingController toText = TextEditingController();
+
+  final TextEditingController fromText = TextEditingController();
+  late HomeController homeController;
+
+  @override
+  void initState() {
+    super.initState();
+    homeController = HomeController(toText: toText, fromText: fromText);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
         child: Padding(
           padding:
               const EdgeInsets.only(top: 100, bottom: 20, left: 20, right: 20),
@@ -20,14 +36,34 @@ class HomeView extends StatelessWidget {
                 style: TextStyle(fontSize: 30),
               ),
               Image.asset('assets/currencyExchange.png'),
-              const CurrencyBox(),
-              const CurrencyBox(),
+              CurrencyBox(
+                key: UniqueKey(),
+                selectedItem: homeController.toCurrency,
+                controller: toText,
+                items: homeController.currencies,
+                onChanged: (model) {
+                  setState(() {
+                    homeController.toCurrency = model!;
+                  });
+                },
+              ),
+              CurrencyBox(
+                key: UniqueKey(),
+                selectedItem: homeController.fromCurrency,
+                controller: fromText,
+                items: homeController.currencies,
+                onChanged: (model) {
+                  setState(() {
+                    homeController.fromCurrency = model!;
+                  });
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
               ElevatedButton(
                 onPressed: () {
-                  print('Convert');
+                  homeController.convert();
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(Colors.amber[800]),
