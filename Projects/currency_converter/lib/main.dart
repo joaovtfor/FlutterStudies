@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'controllers/darkModeController.dart';
-import 'views/home-view.dart';
+import 'app/controllers/darkModeController.dart';
+import 'app/views/home-view.dart';
 
 main() {
   runApp(const AppWidget());

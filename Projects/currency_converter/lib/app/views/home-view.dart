@@ -1,4 +1,4 @@
-import 'package:currency_converter/components/currencyBox.dart';
+import 'package:currency_converter/app/components/currencyBox.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
