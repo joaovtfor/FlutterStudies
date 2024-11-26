@@ -1,7 +1,7 @@
 // ignore: file_names
-import 'package:stack/appController.dart';
-import 'package:stack/homePage.dart';
-import 'package:stack/login_page.dart';
+import 'package:routes/app_controller.dart';
+import 'package:routes/home_page.dart';
+import 'package:routes/login_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -16,11 +16,11 @@ class AppWidget extends StatelessWidget {
             theme: ThemeData(
                 primarySwatch: Colors.red,
                 brightness: AppController.instance.isDarkTheme
-                    ? Brightness.dark
-                    : Brightness.light),
+                    ? Brightness.light
+                    : Brightness.dark),
             routes: {
               '/': (context) => const LoginPage(),
-              '/home': (context) => HomePage(),
+              '/home': (context) => const HomePage(),
             },
           );
         });

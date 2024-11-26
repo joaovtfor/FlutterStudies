@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       _password = value;
                     });
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Password',
                   ),
                 ),

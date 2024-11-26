@@ -1,7 +1,9 @@
-import 'package:stack/appController.dart';
+import 'package:image/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -17,41 +19,45 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[700],
         title: const Text(
-          'Stack test',
+          'Image Test',
           style: TextStyle(color: Colors.white),
         ),
         actions: const [CustomSwitch()],
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.7,
+        height: MediaQuery.of(context).size.height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 300,
+              height: MediaQuery.of(context).size.height * 0.25,
               child: Image.asset(
                 'assets/img/Logo-tempo-integral.png',
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Welcome to the home page',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  SizedBox(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/');
-                      },
-                      child: const Text('Back'),
+              height: MediaQuery.of(context).size.height * 0.45,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Welcome to the home page',
+                      style: TextStyle(fontSize: 24),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/');
+                        },
+                        child: const Text('Back'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],

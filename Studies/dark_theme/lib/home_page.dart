@@ -1,7 +1,8 @@
+import 'package:dark_theme/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() {
@@ -22,17 +23,12 @@ class HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Container(
-          height: 200,
-          width: 200,
-          color: Colors.blue[900],
-          child: Center(
-            child: Container(
-              height: 100,
-              width: 100,
-              color: Colors.white,
-            ),
-          )),
+      body: Center(
+          child: Switch(
+              value: AppController.instance.isDarkTheme,
+              onChanged: (value) {
+                AppController.instance.changeTheme();
+              })),
     );
   }
 }

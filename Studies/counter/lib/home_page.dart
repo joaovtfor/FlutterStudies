@@ -1,6 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -15,7 +19,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text(
+        title: const Text(
           'Home Page',
           style: TextStyle(color: Colors.white),
         ),
@@ -24,7 +28,7 @@ class HomePageState extends State<HomePage> {
           child: GestureDetector(
               child: Text(
                 "Contador: $counter",
-                style: TextStyle(fontSize: 35),
+                style: const TextStyle(fontSize: 35),
               ),
               onTap: () {
                 setState(() {
@@ -33,7 +37,7 @@ class HomePageState extends State<HomePage> {
                 });
               })),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () {
             setState(() {
               counter++;

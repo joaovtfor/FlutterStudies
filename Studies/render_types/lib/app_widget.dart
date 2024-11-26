@@ -1,8 +1,10 @@
-import 'package:dark_theme/appController.dart';
-import 'package:dark_theme/homePage.dart';
+import 'package:render_types/app_controller.dart';
+import 'package:render_types/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
+  const AppWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -14,7 +16,7 @@ class AppWidget extends StatelessWidget {
                   brightness: AppController.instance.isDarkTheme
                       ? Brightness.light
                       : Brightness.dark),
-              home: HomePage());
+              home: const HomePage());
         });
   }
 }

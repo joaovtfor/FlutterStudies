@@ -1,7 +1,9 @@
-import 'package:component_widgets/appController.dart';
+import 'package:login_page/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -16,31 +18,20 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text(
+        title: const Text(
           'DarkTheme',
           style: TextStyle(color: Colors.white),
         ),
-        actions: [CustomSwitch()],
+        actions: const [CustomSwitch()],
       ),
-      body: Container(
+      body: const SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Contador Column: $counter',
-              style: TextStyle(color: Colors.blue),
-            ),
-            CustomSwitch(),
-            Container(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Contador Row: $counter'),
-                CustomSwitch(),
-              ],
-            )
+            Text('Welcome to the DarkTheme App',
+                style: TextStyle(fontSize: 24)),
           ],
         ),
       ),
@@ -49,6 +40,8 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Switch(

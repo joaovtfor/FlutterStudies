@@ -1,7 +1,9 @@
-import 'package:routes/appController.dart';
+import 'package:component_widgets/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -16,27 +18,31 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text(
-          'Router Test',
+        title: const Text(
+          'DarkTheme',
           style: TextStyle(color: Colors.white),
         ),
-        actions: [CustomSwitch()],
+        actions: const [CustomSwitch()],
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Welcome to the DarkTheme App',
-                style: TextStyle(fontSize: 24)),
-            Container(
-                child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/');
-              },
-              child: Text('Back'),
-            ))
+            Text(
+              'Contador Column: $counter',
+              style: const TextStyle(color: Colors.blue),
+            ),
+            const CustomSwitch(),
+            Container(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Contador Row: $counter'),
+                const CustomSwitch(),
+              ],
+            )
           ],
         ),
       ),
@@ -45,6 +51,8 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Switch(

@@ -1,7 +1,11 @@
-import 'package:drawer/appController.dart';
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:drawer/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -29,7 +33,7 @@ class HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Welcome to the home page',
                   style: TextStyle(fontSize: 24),
                 ),
@@ -38,7 +42,7 @@ class HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.of(context).pushNamed('/');
                     },
-                    child: Text('Back'),
+                    child: const Text('Back'),
                   ),
                 ),
               ],

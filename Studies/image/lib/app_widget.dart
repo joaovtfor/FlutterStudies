@@ -1,6 +1,7 @@
-import 'package:drawer/appController.dart';
-import 'package:drawer/homePage.dart';
-import 'package:drawer/loginPage.dart';
+// ignore: file_names
+import 'package:image/app_controller.dart';
+import 'package:image/home_page.dart';
+import 'package:image/login_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppWidget extends StatelessWidget {
                     : Brightness.light),
             routes: {
               '/': (context) => const LoginPage(),
-              '/home': (context) => HomePage(),
+              '/home': (context) => const HomePage(),
             },
           );
         });

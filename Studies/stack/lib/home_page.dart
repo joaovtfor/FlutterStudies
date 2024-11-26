@@ -1,7 +1,9 @@
-import 'package:image/appController.dart';
+import 'package:stack/app_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -17,45 +19,41 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[700],
         title: const Text(
-          'Image Test',
+          'Stack test',
           style: TextStyle(color: Colors.white),
         ),
         actions: const [CustomSwitch()],
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height * 0.7,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
+              height: 300,
               child: Image.asset(
                 'assets/img/Logo-tempo-integral.png',
-                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Welcome to the home page',
-                      style: TextStyle(fontSize: 24),
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Welcome to the home page',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  SizedBox(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/');
+                      },
+                      child: const Text('Back'),
                     ),
-                    SizedBox(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/');
-                        },
-                        child: const Text('Back'),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           ],
