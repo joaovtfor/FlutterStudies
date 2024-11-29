@@ -42,6 +42,7 @@ class _HomeViewState extends State<HomeView> {
                 controller: toText,
                 items: homeController.currencies,
                 onChanged: (model) {
+                  // fetch();
                   setState(() {
                     homeController.toCurrency = model!;
                   });

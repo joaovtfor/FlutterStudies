@@ -1,3 +1,7 @@
+import 'package:http/http.dart' as http;
+import 'package:unixtime/unixtime.dart';
+import 'dart:convert';
+
 class CurrencyModel {
   final String name;
   final double real;
@@ -11,6 +15,28 @@ class CurrencyModel {
       required this.dollar,
       required this.euro,
       required this.bitcoin});
+
+  Future fetch({name, rates}) async {
+    var url = Uri.parse('https://api.exchangerate-api.com/v4/latest/$name');
+    final response = await http
+        .get(url, headers: {'Content-Type': 'application/json; charset=UTF-8'});
+
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      final ratesData = data['rates'];
+      final currencyBase = data['base'];
+      currencyBase.toString();
+      final currencyDate = data['date'];
+      currencyDate.toString();
+      final int timeLastUpdated = data['time_last_updated'];
+      timeLastUpdated.toUnixTime();
+
+      return ratesData;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   static List<CurrencyModel> getCurrencies() {
     return <CurrencyModel>[
