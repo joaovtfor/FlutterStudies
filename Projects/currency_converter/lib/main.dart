@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app/controllers/dark_mode_controller.dart';
-import 'app/views/home-view.dart';
+import 'app/views/home_view.dart';
 
 main() {
   runApp(const AppWidget());
@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeView(),
+      home: const HomeView(),
       theme: ThemeData(
           primarySwatch: Colors.red,
           brightness: DarkModeController.instance.isDarkTheme
