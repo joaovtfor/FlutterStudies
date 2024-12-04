@@ -1,6 +1,29 @@
 import 'package:currency_converter/app/components/currency_box.dart';
 import 'package:currency_converter/app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+class Todo {
+  final String name;
+  final Map real;
+  final String date;
+  final int timeLastUpdated;
+
+  Todo(
+      {required this.name,
+      required this.real,
+      required this.date,
+      required this.timeLastUpdated});
+
+  factory Todo.fromJson(Map dataValues) {
+    return Todo(
+        name: dataValues['base'],
+        real: dataValues['rates'],
+        date: dataValues['date'],
+        timeLastUpdated: dataValues['time_last_updated']);
+  }
+}
 
 // ignore: must_be_immutable
 class HomeView extends StatefulWidget {
@@ -15,6 +38,24 @@ class _HomeViewState extends State<HomeView> {
 
   final TextEditingController fromText = TextEditingController();
   late HomeController homeController;
+
+  Future<Todo> fetch() async {
+    var url = Uri.parse('https://api.exchangerate-api.com/v4/latest/BRL');
+    final response = await http
+        .get(url, headers: {'Content-Type': 'application/json; charset=UTF-8'});
+
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      final dataValues = Todo.fromJson(data);
+      // print(data);
+      print(dataValues.real['USD']);
+
+      return dataValues;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   @override
   void initState() {
@@ -42,7 +83,7 @@ class _HomeViewState extends State<HomeView> {
                 controller: toText,
                 items: homeController.currencies,
                 onChanged: (model) {
-                  // fetch();
+                  fetch();
                   setState(() {
                     homeController.toCurrency = model!;
                   });
@@ -73,6 +114,18 @@ class _HomeViewState extends State<HomeView> {
                   'Convert',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
+              ),
+              const Text('Actual currencies:'),
+              ListView.builder(
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(homeController.currencies[index].name),
+                    subtitle:
+                        Text(homeController.currencies[index].real.toString()),
+                  );
+                },
+                itemCount: homeController.currencies.length,
+                shrinkWrap: true,
               ),
             ],
           ),
